@@ -52,9 +52,6 @@ void Graph::ExportGraphToDot(std::string filename) {
         }
 
         std::string edge = " -- ";
-        /* не знаю, будут ли смешенные(неориентированно-ориентированные),
-          пока это не предусмотренно, если что, потом исправлю.
-        */
         for (std::size_t i = 0; i < size_; i++) {
             for (std::size_t j = 0; j < size_; j++) {
                 if (adjacencyMatrix_(i, j) != adjacencyMatrix_(j, i)) {
