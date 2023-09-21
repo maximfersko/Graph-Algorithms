@@ -146,60 +146,6 @@ TEST(floyd_warshall_algorithm, firstSit) {
     ASSERT_EQ(0, result(2, 2));
 }
 
-//    ###################################
-//    ##                               ##
-//    ##     LEAST_SPANNING_TREE       ##
-//    ##                               ##
-//    ###################################
-
-TEST(prim, firstSit) {
-    Matrix<unsigned int> data({0, 2, 0, 6, 0, 2, 0, 3, 8, 5, 0, 3, 0,
-                               0, 7, 6, 8, 0, 0, 9, 0, 5, 7, 9, 0});
-    algorithms::graph_t graph(data);
-    algorithms::GraphAlgoritms algoritms;
-    algorithms::graph_t result = algoritms.GetLeastSpanningTree(graph);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(0, 3), 6);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(1, 4), 5);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(0, 1), 2);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(1, 2), 3);
-}
-
-TEST(prim, secondSit) {
-    Matrix<unsigned int> data({0,  9,  75, 0,  0,  9, 0,  95, 19, 42, 75, 95, 0,
-                               51, 66, 0,  19, 51, 0, 31, 0,  42, 66, 31, 0});
-    algorithms::graph_t graph(data);
-    algorithms::GraphAlgoritms algoritms;
-    algorithms::graph_t result = algoritms.GetLeastSpanningTree(graph);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(3, 2), 51);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(0, 1), 9);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(1, 3), 19);
-    ASSERT_EQ(result.GetAdjacencyMatrix()(3, 4), 31);
-}
-
-//    ##########################
-//    ##                      ##
-//    ##     ANT_COLONY       ##
-//    ##                      ##
-//    ##########################
-
-TEST(ant, firstSit) {
-    algorithms::graph_t graph;
-    graph.LoadGraphFromFile("./tests/data/examp4");
-    algorithms::GraphAlgoritms algoritms;
-    algorithms::tsm_t res;
-    res = algoritms.SolveTravelingSalesmanProblem(graph);
-    ASSERT_EQ(res.distance_, 140);
-}
-
-TEST(ant, secondSit) {
-    algorithms::graph_t graph;
-    graph.LoadGraphFromFile("./tests/data/examp5");
-    algorithms::GraphAlgoritms algoritms;
-
-    ASSERT_THROW(algoritms.SolveTravelingSalesmanProblem(graph),
-                 std::runtime_error);
-}
-
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

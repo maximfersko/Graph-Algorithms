@@ -6,8 +6,6 @@
 #include "../containers/queue.hpp"
 #include "../containers/stack.hpp"
 #include "../graph/graph.h"
-#include "ant_colony.h"
-
 namespace algorithms {
 
 template <class T>
@@ -30,8 +28,6 @@ class GraphAlgoritms {
                                                  int vertex2);
     static Matrix<unsigned int> GetShortestPathsBetweenAllVertices(
         graph_t &graph);
-    static graph_t GetLeastSpanningTree(graph_t &graph);
-    static tsm_t SolveTravelingSalesmanProblem(graph_t &graph);
 
    private:
     graph_t graph_;

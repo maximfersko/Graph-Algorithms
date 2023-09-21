@@ -22,10 +22,6 @@ void Menu::PrintMenu() {
               << std::endl
               << "|         5. Shortest paths between all vertices          |"
               << std::endl
-              << "|             6.Search Minimal spanning tree              |"
-              << std::endl
-              << "|                 7. Salesman problem                     |"
-              << std::endl
               << "|                                                         |"
               << std::endl
               << "|                       0. Exit                           |"
@@ -116,23 +112,6 @@ void Menu::ShortestPathBetweenAllVertices() {
     Algorihms::GetShortestPathsBetweenAllVertices(graph_).print();
 }
 
-void Menu::FindMinimalSpainingTree() {
-    std::cout << "Result: " << std::endl;
-    Algorihms::GetLeastSpanningTree(graph_).PrintGraph();
-}
-
-void Menu::SolveTravelingSalesmanProblems() {
-    try {
-        tsm_t result =
-            Algorihms::SolveTravelingSalesmanProblem(graph_);
-        std::cout << "Result: " << std::endl;
-        for (auto item : result.vertices_) std::cout << item << " ";
-        std::cout << std::endl << "Distance: " << result.distance_;
-    } catch (const std::runtime_error& e) {
-        std::cerr << e.what() << std::endl;
-    }
-}
-
 void Menu::PrintVertex(std::vector<unsigned int> vertices) {
     std::cout << "Result: " << std::endl;
     for (auto elm : vertices) std::cout << elm << " ";
@@ -155,12 +134,6 @@ void Menu::SelectAction() {
             break;
         case '5':
             ShortestPathBetweenAllVertices();
-            break;
-        case '6':
-            FindMinimalSpainingTree();
-            break;
-        case '7':
-            SolveTravelingSalesmanProblems();
             break;
         case '0':
             system("clear");
